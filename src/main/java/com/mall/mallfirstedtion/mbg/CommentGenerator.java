@@ -56,8 +56,8 @@ public class CommentGenerator extends DefaultCommentGenerator {
     private void addFieldJavaDoc(Field field, String remarks) {
         //文档注释开始
         field.addJavaDocLine("/**");
-        //获取数据库字段的备注信息
-        String[] remarkLines = remarks.split(System.getProperty("line separator"));
+        //获取数据库字段的备注信息  bug处("line separator")已修复
+        String[] remarkLines = remarks.split(System.getProperty("line.separator"));
         for (String remarkLine : remarkLines) {
             field.addJavaDocLine(" * " + remarkLine);
         }
