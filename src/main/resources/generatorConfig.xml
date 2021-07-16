@@ -3,15 +3,21 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
+<!--context目录下jdbcconnection所需要的配置信息,已完成-->
     <properties resource="generator.properties"/>
+<!--    默认是mybatis3,会生成simple方法,flat是一个表一个对象类-->
     <context id="MysqlContext" targetRuntime="Mybatis3" defaultModelType="flat">
+<!--        自动分隔符的配置信息-->
         <property name="autoDelimitKeywords" value="true"/>
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
         <property name="javaFileEncoding" value="UTF-8"/>
+<!--        序列化插件和pojo对象生成toString方法插件-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+<!--        自动注释生成器,配置完成-->
         <commentGenerator type="com.mall.mallfirstedtion.mbg.CommentGenerator">
+<!--            要注释,要日期,要数据库表信息,选择自己写的-->
             <property name="suppressAllComments" value="true"/>
             <property name="suppressDate" value="true"/>
             <property name="addRemarkComments" value="true"/>
@@ -20,12 +26,17 @@
                         connectionURL="${jdbc.connectionURL}"
                         userId="${jdbc.userId}"
                         password="${jdbc.password}">
+            <!--解决mysql驱动升级到8.0后不生成指定数据库代码的问题-->
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
+<!--        指定生成model的路径-->
         <javaModelGenerator targetPackage="com.mall.mallfirstedtion.mbg.model"
                             targetProject="mallFirstEdtion\src\main\java"/>
+<!--        指定生成mapper.xml的路径-->
         <sqlMapGenerator targetPackage="com.mall.mallfirstedtion.mapper" targetProject="mallFirstEdtion\src\main\resources"/>
+<!--        指定生成mapper接口的路径,同时启用纯xml写sql方法-->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.mall.mallfirstedtion.mbg.mapper" targetProject="mallFirstEdtion\src\main\java"/>
+<!--        生成名字中有pms_brand的表 ，在插入数据后获取自增列true-->
         <table tableName="pms_brand">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
