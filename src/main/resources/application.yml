@@ -2,11 +2,12 @@ server:
   port: 8080
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3307/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
-    username: root
-    password: wangzhe123
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3307/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+      username: root
+      password: wangzhe123
 mybatis:
   mapper-locations:
-    - classpath: mapper/*.xml
-    - classpath: com/**/mapper/*.xml
+    - classpath:mapper/*.xml
+    - classpath*:com/**/mapper/*.xml
