@@ -36,7 +36,7 @@
         <sqlMapGenerator targetPackage="com.mall.mallfirstedtion.mapper" targetProject="src/main/resources"/>
 <!--        指定生成mapper接口的路径,同时启用纯xml写sql方法-->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.mall.mallfirstedtion.mbg.mapper" targetProject="src/main/java"/>
-<!--        生成名字中有pms_brand的表 ，在插入数据后获取自增列true-->
+<!--        生成名称叫pms_brand的表 ，在插入数据后获取自增列true-->
         <table tableName="pms_brand">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>

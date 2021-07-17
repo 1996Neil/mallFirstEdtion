@@ -12,7 +12,7 @@ import java.util.Properties;
  * @author wangzhe
  * @ClassName CommentGenerator
  * @create 2021-07-16 22:11
- * @description生成注释
+ * @description 生成注释
  * @Version 1.0
  */
 public class CommentGenerator extends DefaultCommentGenerator {
@@ -20,7 +20,7 @@ public class CommentGenerator extends DefaultCommentGenerator {
     private boolean addRemarkComments = false;
 
     /**
-     * @return void
+     *
      * @Description: 设置用户配置的参数
      * @Date 22:52 2021/7/16
      * @Param [properties]
@@ -32,7 +32,7 @@ public class CommentGenerator extends DefaultCommentGenerator {
     }
 
     /**
-     * @return void
+     *
      * @Description: 给字段添加注释
      * @Date 22:54 2021/7/16
      * @Param [field, introspectedTable, introspectedColumn]
@@ -48,7 +48,7 @@ public class CommentGenerator extends DefaultCommentGenerator {
     }
 
     /**
-     * @return void
+     *
      * @Description: 给model字段添加注释, 给上面的方法做引用
      * @Date 23:03 2021/7/16
      * @Param [field, remarks]

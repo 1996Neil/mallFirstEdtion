@@ -1,7 +1,12 @@
 package com.mall.mallfirstedtion.mbg.model;
 
 import java.io.Serializable;
-
+/**
+ * @Description: 品牌表
+ * @Date 12:02 2021/7/17
+ * @Param
+ * @return
+ **/
 public class PmsBrand implements Serializable {
     private Long id;
 
