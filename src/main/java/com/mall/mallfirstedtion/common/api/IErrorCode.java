@@ -8,4 +8,8 @@ package com.mall.mallfirstedtion.common.api;
  * @Version 1.0
  */
 public interface IErrorCode {
+
+    long getCode();
+
+    String getMessage();
 }

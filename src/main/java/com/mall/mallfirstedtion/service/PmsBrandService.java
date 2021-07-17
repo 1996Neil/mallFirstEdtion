@@ -21,7 +21,7 @@ public interface PmsBrandService {
      **/
     List<PmsBrand> listAllBrand();
 
-    int createBrand(Long id, PmsBrand brand);
+    int createBrand(PmsBrand brand);
 
     int updateBrand(Long id, PmsBrand brand);
 
