@@ -1,7 +1,5 @@
 package com.mall.mallfirstedtion.mbg;
 
-import com.sun.xml.internal.bind.v2.model.core.ReferencePropertyInfo;
-import io.swagger.annotations.ApiModelProperty;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.CompilationUnit;
@@ -17,16 +15,18 @@ import java.util.Properties;
  * @ClassName CommentGenerator
  * @create 2021-07-16 22:11
  * @description 生成注释
+ * CommentGenerator为MyBatis Generator的自定义注释生成器，修改addFieldComment方法使其生成Swagger的@ApiModelProperty注解
+ * 来取代原来的方法注释，添加addJavaFileComment方法，使其能在import中导入@ApiModelProperty，
+ * 否则需要手动导入该类，在需要生成大量实体类时，是一件非常麻烦的事。
  * @Version 1.0
  */
 public class CommentGenerator extends DefaultCommentGenerator {
 
     private boolean addRemarkComments = false;
-    private static final String EXAMPLE_SUFFIX="Example";
-    private static final String API_PROPERTY_FULL_CLASS_NAME="io.swagger.annotations.ApiModelProperty";
+    private static final String EXAMPLE_SUFFIX = "Example";
+    private static final String API_PROPERTY_FULL_CLASS_NAME = "io.swagger.annotations.ApiModelProperty";
 
     /**
-     *
      * @Description: 设置用户配置的参数
      * @Date 22:52 2021/7/16
      * @Param [properties]
@@ -38,7 +38,6 @@ public class CommentGenerator extends DefaultCommentGenerator {
     }
 
     /**
-     *
      * @Description: 给字段添加注释
      * @Date 22:54 2021/7/16
      * @Param [field, introspectedTable, introspectedColumn]
@@ -51,16 +50,15 @@ public class CommentGenerator extends DefaultCommentGenerator {
             //addFieldJavaDoc(field, remarks);
             //数据库中特殊字符需要转义
             if (remarks.contains("\"")) {
-                remarks=remarks.replace("\"","'");
+                remarks = remarks.replace("\"", "'");
             }
             //给model的字段添加swagger注解
-            field.addJavaDocLine("@ApiModelProperty(value= \""+remarks+"\")");
+            field.addJavaDocLine("@ApiModelProperty(value= \"" + remarks + "\")");
         }
 
     }
 
     /**
-     *
      * @Description: 给model字段添加注释, 给上面的方法做引用
      * @Date 23:03 2021/7/16
      * @Param [field, remarks]
@@ -80,15 +78,16 @@ public class CommentGenerator extends DefaultCommentGenerator {
 
     /**
      * 重写注解方式
-     * @Date 16:37 2021/7/23
+     *
      * @param compilationUnit
-     *@return  void
+     * @return void
+     * @Date 16:37 2021/7/23
      **/
     @Override
     public void addJavaFileComment(CompilationUnit compilationUnit) {
         super.addJavaFileComment(compilationUnit);
         //只在model中添加swagger注解类的导入PmsBrandExample.java
-        if (!compilationUnit.isJavaInterface()&&!compilationUnit.getType().getFullyQualifiedName().contains(EXAMPLE_SUFFIX)) {
+        if (!compilationUnit.isJavaInterface() && !compilationUnit.getType().getFullyQualifiedName().contains(EXAMPLE_SUFFIX)) {
             compilationUnit.addImportedType(new FullyQualifiedJavaType(API_PROPERTY_FULL_CLASS_NAME));
         }
     }

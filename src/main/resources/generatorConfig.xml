@@ -15,7 +15,10 @@
 <!--        序列化插件和pojo对象生成toString方法插件-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
-<!--        自动注释生成器,配置完成-->
+        <!--生成mapper.xml时覆盖原文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+
+        <!--        自动注释生成器,配置完成-->
         <commentGenerator type="com.mall.mallfirstedtion.mbg.CommentGenerator">
 <!--            要注释,要日期,要数据库表信息,选择自己写的-->
             <property name="suppressAllComments" value="true"/>
