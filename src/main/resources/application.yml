@@ -9,5 +9,6 @@ spring:
       password: wangzhe123
 mybatis:
   mapper-locations:
+#    - 要点说明,classpath:不能有空格
     - classpath:mapper/*.xml
     - classpath*:com/**/mapper/*.xml
