@@ -1,5 +1,4 @@
 package com.mall.mallfirstedtion.config;
-
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
