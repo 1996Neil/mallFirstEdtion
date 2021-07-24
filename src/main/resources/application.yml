@@ -12,3 +12,7 @@ mybatis:
 #    - 要点说明,classpath:不能有空格
     - classpath:mapper/*.xml
     - classpath*:com/**/mapper/*.xml
+springfox:
+  documentation:
+    enabled: true
+    auto-startup: true
